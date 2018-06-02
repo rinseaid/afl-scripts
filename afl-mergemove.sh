@@ -5,6 +5,11 @@ outputpath="/mnt/data/AFL"
 #Location of log file
 LOGFILE="/config/scripts/logs/afl-mergemove.log"
 
+if ! [ -x "$(command -v ffmpeg)" ]; then
+	apt-get update
+	apt-get install -y ffmpeg
+fi
+
 {
 IFS=$'\n';for file in $(find "$processpath" -name '*.mp4' -type f)
 do
